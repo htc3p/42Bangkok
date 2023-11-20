@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <input type="text" id="left-operand">
+    <select id="calc">
+        <optgroup label="operator">
+            <option value="+" class="add">+</option>
+            <option value="-" class="sub">-</option>
+            <option value="*" class="mul">*</option>
+            <option value="/" class="divi">/</option>
+            <option value="%" class="mod">%</option>
+        </optgroup>
+    </select>
+    <input type="text" id="right-operand">
+    <button id="btn">Try me!</button>
+
+    <script>
+        $(document).ready(function () {
+            function alertText() {
+                alert("Please, use me...");
+            }
+
+            const intervalId = setInterval(alertText, 30000);
+
+            function isPositiveInt(str) {
+                return /^\d+$/.test(str);
+            }
+
+            function performCalculation(operator, leftOperand, rightOperand) {
+                const left = parseInt(leftOperand);
+                const right = parseInt(rightOperand);
+
+                switch (operator) {
+                    case "+":
+                        return left + right;
+                    case "-":
+                        return left - right;
+                    case "*":
+                        return left * right;
+                    case "/":
+                        return left / right;
+                    case "%":
+                        return left % right;
+                }
+            }
+
+            $("#btn").on("click", function () {
+                const leftOperand = $("#left-operand").val();
+                const rightOperand = $("#right-operand").val();
+                const operator = $("#calc").val();
+
+                if (!isPositiveInt(leftOperand) || !isPositiveInt(rightOperand)) {
+                    console.log("Error :(");
+                    alert("Error :(");
+                } else if ((operator === "%" || operator === "/") && rightOperand === "0") {
+                    console.log("It’s over 9000!");
+                    alert("It’s over 9000!");
+                } else {
+                    const result = performCalculation(operator, leftOperand, rightOperand);
+                    console.log(result);
+                    alert(result);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

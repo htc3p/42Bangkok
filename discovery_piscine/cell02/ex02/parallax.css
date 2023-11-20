@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    text-align: center;
+    font-size: 3vw;
+    color: white;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+.image {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#background-image {
+    background-image: url('https://cdn.pixabay.com/photo/2019/08/31/11/09/meme-4443243_1280.jpg');
+}
+
+#bottom-image {
+    background-image: url('https://cdn.pixabay.com/photo/2019/08/29/23/56/crazy-4440146_1280.jpg');
+}

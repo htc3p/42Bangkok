@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: red;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="balloon" onclick="ifClick()" onmouseleave="ifLeave()"></div>
+
+    <script>
+        var color = ['red', 'green', 'blue'];
+        var balloon = document.getElementById("balloon");
+        var index = 0;
+        var mod = 0;
+
+        function ifClick() {
+            //change color
+            index += 1;
+            mod = index % 3;
+            if (mod < 0) { mod += 3 }
+            if (mod==0) { balloon.style.backgroundColor = color[0] }
+            else if (mod==1) { balloon.style.backgroundColor = color[1] }
+            else if (mod==2) { balloon.style.backgroundColor = color[2] }
+
+            //change size
+            if (balloon.offsetWidth <= 410) {
+            balloon.style.height = (balloon.offsetWidth + 10) + 'px';
+            balloon.style.width = (balloon.offsetWidth + 10) + 'px';
+            }
+            else {
+                balloon.style.height = '200px';
+                balloon.style.width = '200px';
+            }
+        }
+        
+        function ifLeave() {
+            //change color
+            index -= 1;
+            mod = index % 3;
+            if (mod < 0) { mod += 3 }
+            if (mod==0) { balloon.style.backgroundColor = color[0] }
+            else if (mod==1) { balloon.style.backgroundColor = color[1] }
+            else if (mod==2) { balloon.style.backgroundColor = color[2] }
+
+            //change size
+            if (balloon.offsetWidth > 200) {
+            balloon.style.height = (balloon.offsetWidth - 5) + 'px';
+            balloon.style.width = (balloon.offsetWidth - 5) + 'px';
+            }
+        }
+    </script>
+</body>
+</html>
